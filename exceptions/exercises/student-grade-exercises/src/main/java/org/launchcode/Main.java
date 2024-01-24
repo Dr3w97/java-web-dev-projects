@@ -15,9 +15,10 @@ public class Main {
         // Test out your CheckFileExtension() function!
     }
 
-    public static void Divide(int x, int y)
+    public static int Divide(int x, int y)
     {
         // Write code here!
+        return x/y;
     }
 
     public static int CheckFileExtension(String fileName)

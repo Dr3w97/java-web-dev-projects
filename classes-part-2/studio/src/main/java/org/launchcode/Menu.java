@@ -1,32 +1,58 @@
 package org.launchcode;
 
 import java.util.ArrayList;
-import java.util.Date;
 
 public class Menu {
-    private Date lastUpdated;
-    private ArrayList<MenuItem> items;
+    ArrayList<ArrayList <MenuItem>> fullMenu  = new ArrayList<>();
 
-    public Menu(Date d, ArrayList<MenuItem> i) {
-        this.lastUpdated = d;
-        this.items = i;
+    ArrayList<MenuItem> appetizer = new ArrayList<>();
+    ArrayList<MenuItem> entre = new ArrayList<>();
+    ArrayList<MenuItem> dessert = new ArrayList<>();
+
+    public Menu() {
+        fullMenu.add(appetizer);
+        fullMenu.add(entre);
+        fullMenu.add(dessert);
     }
 
-    public void setLastUpdated(Date lastUpdated) {
-        this.lastUpdated = lastUpdated;
+    public void setDishes(ArrayList<MenuItem> dishes) {
+        this.fullMenu = fullMenu;
+    }
+    public void addDish(MenuItem dish) {
+        if (dish.getCategory() == "Appetizer") {
+        appetizer.add(dish);
+        } else if (dish.getCategory() == "Entre") {
+            entre.add(dish);
+        }else {
+            dessert.add(dish);
+        }
+    }
+    public void removeDish(MenuItem dish) {
+        fullMenu.remove(dish);
     }
 
-    public void setItems(ArrayList<MenuItem> items) {
-        this.items = items;
-    }
 
-    public Date getLastUpdated() {
-        return lastUpdated;
-    }
+    @Override
+    public String toString() {
+        StringBuilder menuString = new StringBuilder();
+        menuString.append("Appetizer: \n");
+        for (MenuItem item : appetizer) {
+            menuString.append(item);
+        }
+        menuString.append("\nEntre: \n");
+        for (MenuItem item : entre) {
+            menuString.append(item);
+        }
+     menuString.append("\nDessert: \n");
+        for (MenuItem item : dessert) {
+            menuString.append(item);
+        }
 
-    public ArrayList<MenuItem> getItems() {
-        return items;
+        return menuString.toString();
     }
 }
+
+
+
 
 
